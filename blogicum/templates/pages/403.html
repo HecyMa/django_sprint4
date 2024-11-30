@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}403 Запрещено{% endblock title %}
+{% block content %}
+  <h1>Ошибка 403. Доступ запрещен</h1> <br>
+  <p>У вас нет прав на просмотр этой страницы. {% if not user.is_authenticated %}  Возможно потому что вы не авторизованы{% endif %}</p>
+  <p>Вы можете перейти <a href="{% url 'blog:index' %}">на главную</a> 
+    {% if not user.is_authenticated %} 
+      или <a href="{% url 'users:login' %}">авторизоватся</a></p>
+    {% endif %}
+{% endblock content %}
